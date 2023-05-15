@@ -65,6 +65,7 @@ resource "aws_s3_object" "index" {
 
   key    = "index.html"
   source = "../index.html"
+  etag = filemd5("../index.html")
 
   content_type = "text/html"
 }
@@ -74,6 +75,7 @@ resource "aws_s3_object" "style" {
 
   key    = "style.css"
   source = "../style.css"
+  etag = filemd5("../style.css")
 
   content_type = "text/css"
 }
