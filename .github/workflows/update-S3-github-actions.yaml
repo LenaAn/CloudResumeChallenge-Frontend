@@ -1,0 +1,8 @@
+name: update-S3-github-actions
+run-name: ${{ github.actor }} is updating S3
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - run: true -v
