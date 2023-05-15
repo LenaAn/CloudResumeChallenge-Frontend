@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Lena Anyusheva</title>
+</head>
+
+<body>
+
+<h1> Cloud Resume Challenge: Part 2 </h1>
+I'm doing <a href="https://cloudresumechallenge.dev/">https://cloudresumechallenge.dev/</a>, for today there were two points in the plan:
+<ul>
+  <li>HTTPS
+    <p>The S3 website URL should use HTTPS for security. You will need to use Amazon CloudFront to help with this.</p>
+  </li>
+  <li>DNS
+    <p>Point a custom DNS domain name to the CloudFront distribution, so your resume can be accessed at something like my-c00l-resume-website.com. You can use Amazon Route 53 or any other DNS provider for this. A domain name usually costs about ten bucks to register.</p>
+  </li>
+</ul>
+
+<p>The first part turned out to be relatively straightforward, although, of course, it did not work the first time. The instructions have a link to an article that already has three different CloudFormation stacks attached to run the S3 bucket and / or Cloudfront distribution along with them. I decided not to use these stacks, so as not to produce entities, and in general, for the first time, I want to click the buttons myself.
+So I went to the Cloudfront interface myself, created a distribution, specified the S3 bucket as origin, he himself understood that my s3 bucket was hosted as a website, so he pulled it up as origin. It was necessary to configure whether my distribution will accept http or https. I'm doing all this to ensure that clients don't use insecure http, so I've configured http to redirect to https. Separately, you can configure how cloudfront will go to origin - I also said that only via https. It turned out that it was a mistake, because my s3 bucket does not support https (as I understand it). I fixed it, https://d30b6wqm0suf8j.cloudfront.net worked, went and closed public access to the S3 bucket directly. It seems that everything is cultural: from the inside, through the cloudfront, you can only come through https, you cannot go directly to the s3 bucket. Went to eat.</p>
+
+<p>I ate a so-so wok with udon noodles, beef, tofu and teriyaki sauce and red sauce (udon is so-so, sauces together are also so-so), I came to a coffee shop, took coffee and brownies, it's time to register a domain!</p>
+
+<p>Last year I had lenaan.io domain registered for $11/year through godaddy, which I ended up doing nothing on (didn't figure out how to exit their site builder and where to upload my index.html)</p>
+
+<p>So, open Route 53, there is a big button "Register domain". My lenaan.io is already $72 a year, I decided to be greedy and registered lenaan.link for $6 a year. They said that registration would take up to 3 days, but soon a letter arrived in the mail, I confirmed the email, while they brought me dessert, I already had a domain.</p>
+
+<p>All AWS services have a huge amount of documentation and step-by-step tutorials, it’s not clear where you are in which tutorial now, so I decided not to follow the steps that I don’t understand, and went to Route53 hosted zones to add a record. There I indicated that I needed to redirect to my Cloudfront distribution, but Route35 did not find it and said something about us-east-1. I went to google the error, it turned out that in order for Route53 to see my Cloudfront distribution, you need to add your domain to the Cloudfront distribution as an alternate name. And to do this, you need to get a certificate for your domain in AWS Certificate Manager. I read about it in tutorials, but I did not understand what it was and why, and decided to ignore it. Now it is clear! I requested a certificate, wrote this post, I'm sitting waiting ⌛️</p>
+
+</body>
+</html>
