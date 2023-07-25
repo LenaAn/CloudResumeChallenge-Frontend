@@ -1,59 +1,148 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <link rel="stylesheet" href="style.css">
-  <title>Lena Anyusheva</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Lena Anyusheva</title>
 </head>
 
 <body>
-<br><br>
-<h1>Lena Anyusheva</h1>
-<hr />
-<br>
-<p class="head">Work experience</p>
-<ul>
-  <li>Redpanda Data</li>
-  <p>Moving the world from batch processing to real-time with C++</p>
-  <p>In a team implemented tiered storage feature.
-    Implemented remote read replicas, it's like CDN for streaming data:
-    <a href="https://redpanda.com/blog/remote-read-replicas-for-distributing-work"> blog article.</a>
-  </p>
-  <li>Google</li>
-  <p>I develop tools for Customer Care agents of Stadia. That's a full-stack Java application using Google infrastructure.</p>
+    <div class="container">
+        <div class="header">
+            <img src="images/photo.png" alt="Lena's photo" class="profile-photo">
+            <h1>Lena Anyusheva</h1>
+        </div>
+<div class="social-icons">
+    <div class="social-icon github-icon">
+        <a href="https://github.com/Lenaan" target="_blank">
+            <img src="images/github-mark.svg" alt="GitHub icon" class="icon">
+        </a>
+    </div>
+    <div class="social-icon linkedin-icon">
+        <a href="https://www.linkedin.com/in/elena-anyusheva/" target="_blank">
+            <img src="images/linkedin-round-icon.svg" alt="LinkedIn icon" class="icon">
+        </a>
+    </div>
+</div>
 
-  <p>Focus areas:
-  <ul>
-    <li>Product requirements clarification</li>
-    <li>Asynchronous code performance</li>
-    <li>Authentication and authorization management</li>
-    <li>Monitoring and alerting.</li>
-  </ul>
-  </p>
-  <li>WorldQuant</li>
-  <p>My responsibilities included creating alphas, basic trading strategies. I did a lot of time series analysis, sentiment analysis, back-testing. Technology stack is C++ and Python.</p>
-  <li>Goldman Sachs</li>
-  <p>My intern project was the development of a real-time dashboard for visualization and analysis of response time from services. We got data from Kafka, stored it in ElasticSearch, analysed in Python and served using Flask, then visualised using TypeScript and Angular 5.</p>
-  <li>Deutsche Bank</li>
-  <ul>
-    <li>Junior Software Engineer, Part-time
-      <p>
-        I was part of a team working on Nexus, low-latency algorithmic trading platform. The application is written in C++ and extensively uses template metaprogramming.</p>
-    </li>
-    <li>Software Engineer Intern
-      <p>I was part of a team working on Order Management System for internal clients. The application is written in Java. I developed a system that parses logs from a remote server and sends alerts to email if there are some problems in production.</p>
-    </li>
-  </ul>
-</ul>
-<p class="head">Education</p>
-<ul>
-  <a href="https://mipt.ru/english/">
-    <li>Moscow Institute of Physics and Technology, M.S.</li>
-  </a>
-  <a href="https://mipt.ru/english/">
-    <li>Moscow Institute of Physics and Technology, B.S.</li>
-  </a>
-</ul>
+        <hr />
+        <div id="blog-container">
+            <h2 class="blog-title">Recent blog posts</h2>
+            <ul id="blog-posts">
+                    <!-- <a href="1_challenge.html" class="education-link link-with-icon">
+                        How I'm completing Cloud Resume Challenge.
+                    </a>
+                    <img src="images/img_3.png" alt="Cloud Resume Challenge" /> -->
+                </li>
+                    <a href="AWS-ann.html" class="education-link link-with-icon">
+                        I'm an AWS certified practitioner now!
+                    </a>
+                </li>
+                <li class="tab-content placeholder">
+                    <a href="#" class="education-link link-with-icon">
+                        Coming soon...
+                    </a>
+                </li>
+                <li class="tab-content placeholder">
+                    <a href="#" class="education-link link-with-icon">
+                        Coming soon...
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-<script src="js/counter.js"></script>
+        <div class="grid">
+            <div id="work-experience">
+                <p class="head">Work experience</p>
+                <div class="job">
+                    <h3>Redpanda Data</h3>
+                    <p>Moving the world from batch processing to real-time with C++<br><br>
+                        In a team implemented tiered storage feature.<br>Implemented remote read replicas, it's like CDN
+                        for streaming data:<a
+                            href="https://redpanda.com/blog/remote-read-replicas-for-distributing-work"
+                            class="education-link link-with-icon">blog article</a>
+                    </p>
+                </div>
+                <div class="job">
+                    <h3>Google</h3>
+                    <p>I develop tools for Customer Care agents of Stadia.<br>That's a full-stack Java application using
+                        Google infrastructure.</p>
+                    <div class="focus-areas">
+                        <p class="title-focus" id="focus-areas-title">Focus areas</p>
+                        <ul class="focus-areas">
+                            <li id="focus-item-1">Product requirements clarification</li>
+                            <li id="focus-item-2">Asynchronous code performance</li>
+                            <li id="focus-item-3">Authentication and authorization management</li>
+                            <li id="focus-item-4">Monitoring and alerting</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="job">
+                    <h3>WorldQuant</h3>
+                    <p>My responsibilities included creating alphas, basic trading strategies.<br>I did a lot of time
+                        series analysis, sentiment analysis, back-testing.<br>echnology stack is C++ and Python.</p>
+                </div>
+                <div class="job">
+                    <h3>Goldman Sachs</h3>
+                    <p>My intern project was the development of a real-time dashboard for visualization<br>and analysis
+                        of
+                        response time from services. We got data from Kafka, stored it in ElasticSearch,<br>analysed in
+                        Python and served using Flask, then visualised using TypeScript and Angular 5.</p>
+                </div>
+                <div class="job">
+                    <h3>Deutsche Bank</h3>
+                    <h4>Junior Software Engineer, Part-time</h4>
+                    <p>I was part of a team working on Nexus, low-latency algorithmic trading platform.<br>The
+                        application
+                        is written in C++ and extensively uses template metaprogramming.</p>
+                    <h4>Software Engineer Intern</h4>
+                    <p>I was part of a team working on Order Management System for internal clients.<br>The application
+                        is
+                        written in Java. I developed a system that parses logs from a remote server<br>and sends alerts
+                        to
+                        email if there are some problems in production.
+                    </p>
+                </div>
+            </div>
+
+            <div id="education">
+                <p class="head">Education</p>
+                <div class="education">
+                    <a href="https://mipt.ru/english/" class="education-link link-with-icon">Moscow Institute of Physics and Technology,
+                        M.S.</a>
+                </div>
+                <div class="education">
+                    <a href="https://mipt.ru/english/" class="education-link link-with-icon">Moscow Institute of Physics and Technology,
+                        B.S.</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="email-container">
+                <div class="email-icon">
+                    <img src="images/copy-regular.svg" alt="Copy icon">
+                </div>
+                <div class="email">
+                    <a id="copy-email" class="copy-email" onclick="copyToClipboard('baajina@gmail.com')">baajina@gmail.com</a>
+                    <span id="copy-success" class="copy-success">Link copied!</span>
+                </div>
+            </div>
+        </div>
+
+    <script src="blog.js"></script>
+
+    <script>
+        function copyToClipboard(text) {
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+        }
+    </script>
+
 </body>
+
 </html>
