@@ -1,34 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <link rel="stylesheet" href="style.css">
-  <title>Lena's Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS</title>
+    <link rel="stylesheet" href="1_challenge.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 
 <body>
+    <div id="navbar">
+        <a href="#prev">
+            <img src="images/left.svg" alt="Left arrow">
+            <span>Previous note</span>
+        </a>
+        <a href="index.html">Home</a>
+        <a href="#next">
+            <span>Next note</span>
+            <img src="images/right.svg" alt="Right arrow">
+        </a>
+    </div>
 
-<h2>I am now an AWS Certified Cloud Practitioner!</h2> 
-<p>For this you get the following <a href="https://www.credly.com/badges/7cee87c8-7694-43b8-8787-93124e02a3d0/public_url">link</a> and now everyone can make sure that you have shown cloud fluency and foundational AWS knowledge. In addition, you can attach a badge to your LinkedIn page.</p>
+    <h2>Part 1</h2>
+    <h1>I am now an AWS Certified Cloud Practitioner!</h1>
 
-<h3>How did I prepare?</h3>
-  - Free courses on Aws SkillBuilder:
-    -- Exam Prep: AWS Certified Cloud Practitioner (CLF-C01)
-    — AWS Technical Essentials
-  - Practice tests on udemy https://www.udemy.com/course/aws-certified-cloud-practitioner-practice-exams-c/ (Questions are slightly more difficult than in the real exam)
 
-<h3>What does the exam check?</h3>
-AWS Cloud Practitioner foundational exam. Whether you're a devOps developer or a sales person, this is a good start for everyone. Therefore, the content there is a bit general and there is something that needs to be taught specifically for the exam. Even if you have a lot of experience in projects on AWS, you hardly remember that the designated Technical Account manager is available in Enterprise support (which costs $15k per month). But basically, the test can be passed on common sense and experience - questions like what is agility, what determines the cost of EC2, what file system can be mounted simultaneously on several EC2 machines?
+    <p class="summary">AWS Certification shows your cloud fluency and foundational AWS knowledge. Also it gives you the badge that you can add to your LinkedIn page!</p>
 
-<h3>How is the exam going?</h3>
-There are 65 questions in the exam, 50 of them count, 15 do not. These are new questions they are testing. What questions count, you don't know. The exam is given 90 minutes. For the exam, you can get from 100 to 1000 points, the passing score is 700. I passed 827.
+    <button id="share-tw" class="share-btn">
+        <span class="twitter-icon-wrapper">
+            <img class="twitter-icon" src="images/twitter.svg">
+        </span>
+        <span class="twitter-text">Share on Twitter</span>
+    </button>
 
-The exam costs $100. In some cities there is a testing center where you can come and pass. Otherwise, you can take the exam at home through Pearson Vue. You need a room where no one is distracting, before the start of the exam you need to clean the room, remove everything unnecessary from the table, remove additional monitors, notebooks, and in general everything suspicious. During the exam, the proctor looks at you through the camera and makes sure you don't cheat. You can’t leave the view of the camera, you can’t read questions aloud, and it’s better not to look anywhere except for the monitor (the only one!) If the risks are that the Internet will fall off in the process or the neighbors will be distracting, or the phone will ring, then the exam may not be counted.
+    <h3>How did I prepare</h3>
+    <div class="string length">
+        <ul>
+            <li>Free courses on Aws SkillBuilder:
+                <ul>
+                    <li>Exam Prep: AWS Certified Cloud Practitioner (CLF-C01)</li>
+                    <li>AWS Technical Essentials</li>
+                </ul>
+            </li>
+            <li>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.udemy.com/course/aws-certified-cloud-practitioner-practice-exams-c/" class="special-link move-left">Practice tests on udemy</a> (Questions are slightly more difficult than in the real exam)
+            </li>
+        </ul>
+    </div>
 
-<h3>Why is it necessary?</h3>
-Formally, there is no need. But I like to take exams as a way to systematize learning and as a mark for myself - so, at such and such a moment I was at that level. Another motivation is that I want to make https://cloudresumechallenge.dev/docs/the-challenge/aws/, and here the first step is to get certified. Of course, no one will stop me from passing the challenge even without certification, but it’s calmer in my soul.
+    <h3>What does the exam check</h3>
+    <div class="string length">
+        AWS Cloud Practitioner is a foundational exam. Whether you're a devOps developer or a sales person, this is a good start for
+        everyone. Therefore, the content is more general and there is something that needs to be taught specifically for
+        the exam. Even if you have a lot of experience in AWS, you hardly remember that the designated Technical
+        Account manager is available in Enterprise support (which costs $15k per month). But basically, the test can be passed using
+        common sense and experience. For example, the are questions like what is agility, what determines the cost of EC2, what file system can
+        be mounted simultaneously on several EC2 machines?
+    </div>
 
-<h3>What's next?</h3>
-AWS has a lot of certifications, I'm looking at Associate Solutions Architect, but before that I want to dig deeper into AWS with my hands.
+    <h3>How is the exam going</h3>
+    <div class="string length">
+        There are 65 questions in the exam, 50 of them count toward the end result, 15 of them do not. These are the new questions that are being tested. You don't know which questions do count. 
+    </div>
+    <div class="string length">
+        The exam takes 90 minutes. For the exam, you can get from 100 to 1000 points, the
+        passing score is 700. I scored 827. The exam costs $100. In some cities there is a testing center where you can come and sit the exam. Otherwise, you can take the exam at home through Pearson Vue. You need to have a quite clean room and to remove everything unnecessary from the table, for example: additional
+        monitors, notebooks, etc. During the exam, the proctor looks at you through the camera and makes sure you don't cheat. You can't leave the view of the camera, you can't read questions aloud, and it's better not to look anywhere except for the monitor (the only one!). In the event of the broken Internet connection, distraction by neighbors, or a phone call, then the exam may not be canceled.
+    </div>
+
+    <h3>Why is it necessary</h3>
+    <div class="string length">
+        Formally, there is no need. But I like to take exams as a way to systematize learning and as a mark for myself - so, at
+        such and such a moment I was at that level. Another motivation is that I want to take the
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://cloudresumechallenge.dev/docs/the-challenge/aws/" class="special-link move-left">Cloud Resume Challenge</a>, and the first step is to get certified.
+    </div>
+
+        <h3>What's next</h3>
+        <div class="string length">
+            AWS has a lot of certifications, I'm looking at Associate Solutions Architect, but before that I want to get my hands more dirty with AWS.
+        </div>
+
+    <script src="1_challenge.js"></script>
 
 </body>
 </html>
