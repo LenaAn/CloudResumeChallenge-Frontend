@@ -30,6 +30,11 @@ body {
     gap: 0px;
 }
 
+a {
+    color: #369;
+    text-decoration: none;
+}
+
 #navbar a img {
     width: 15px;
     height: 15px;
@@ -95,9 +100,10 @@ ol {
 
 .summary {
     font-family: Arial, sans-serif;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.3;
     max-width: 300px;
+    color: #333
 }
 
 
@@ -107,41 +113,6 @@ ol {
     justify-content: start;
     background: transparent;
     border: none;
-}
-
-.twitter-icon-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: none;
-    box-shadow: 0 0 0 2px #55acee;
-    transition: box-shadow 0.2s;
-}
-
-#share-tw:hover .twitter-icon-wrapper {
-    box-shadow: 0 0 0 6px #55acee;
-}
-
-.twitter-icon {
-    width: 20px;
-    height: auto;
-    fill: #55acee;
-}
-
-.twitter-text {
-    color: black;
-    font-size: 14px;
-    margin-left: 10px;
-    transition: color 0.3s;
-}
-
-#share-tw:hover .twitter-text {
-    color: #55acee;
 }
 
 @keyframes bounce {
@@ -161,10 +132,6 @@ ol {
     60% {
         transform: translateY(-15px);
     }
-}
-
-#share-tw:hover .twitter-icon {
-    animation: bounce 1s infinite;
 }
 
 .special-link {
@@ -197,14 +164,4 @@ ol {
 
 .move-left2 {
     margin-left: 14px;
-}
-
-.twitter-text {
-    color: black;
-    font-size: 12px;
-    transition: color 0.3s;
-}
-
-#share-tw:hover .twitter-text {
-    color: #55acee;
 }
