@@ -59,13 +59,8 @@ hr {
 }
 
 a {
-    color: #333;
+    color: #369;
     text-decoration: none;
-}
-
-a:hover {
-    color: #666;
-    text-decoration: underline;
 }
 
 ul {
