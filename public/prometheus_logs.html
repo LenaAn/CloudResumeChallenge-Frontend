@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Backfilling Historical Data into Prometheus</title>
+    <link rel="stylesheet" href="1_challenge.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+
+<body>
+<div>
+    <a href="index.html">LenaAn - Home</a>
+</div>
+
+<h1>Debug Backfilling Historical Data into Prometheus</h1>
+
+
+<p class="summary">Prometheus provides <a href="https://prometheus.io/docs/prometheus/latest/storage/#backfilling-from-openmetrics-format">a method</a>
+    to backfill historical data, but the process is not very smooth. I describe the gotchas that I stumbled upon and
+    how I debug inserting historical data into Prometheus.
+
+<h3>My setup</h3>
+<div class="string length">
+    I use Prometheus with Grafana for my small telegram bot. Since the app doesn't provide a REST API, I decided that
+    introducing a REST server just for Prometheus to scrape metrics would be an overkill, so I also use pushgateway to
+    push data into Prometheus. All of these services run in Docker.
+
+    <script src="https://gist.github.com/LenaAn/a4f405b1aca4bd9cf23891bc8db07d2b.js"></script>
+
+    Take note of <code>prometheus_data</code> volume here, we will use it later.
+</div>
+
+<h3>Prometheus Support for Backfilling Data</h3>
+<div class="string length">
+    There is <a href="https://prometheus.io/docs/prometheus/latest/storage/#backfilling-from-openmetrics-format">
+    a documentation</a> on how to import historical data into Prometheus from OpenMetrics format. I searched online, and
+    it looks like there were plans to support other ways to backfill historical data: see <a href="https://grafana.com/blog/how-were-improving-backfill-methods-to-get-older-data-into-prometheus/">here</a>
+    and <a href="https://groups.google.com/g/prometheus-developers/c/pfvDtLGQYA0?pli=1">here</a>. But as of writing this
+    in April 2026, the only way in documentation is creating a new TSDB blocks from OpenMetrics format and restart
+    Prometheus.
+</div>
+
+<h3>Preparing OpenMetrics file</h3>
+<div class="string length">
+    OpenMetrics file needs to be of a strict formet: one metric per line, no empty lines, <code># EOF</code> at the end
+    of the file. Pay attention to make sure you included all the metric labels needed!
+    Here's my example of OpenMetrics files I ended up with.
+    <script src="https://gist.github.com/LenaAn/3d21a55a20688c6f1294aee30476819c.js"></script>
+
+    <h4>Some common format issues</h4>
+    <div class="string length">
+        Error message <code>getting min and max timestamp: next: expected next entry after timestamp, got " 1776110190" ("EOF") while parsing: ... </code>
+        usually means you miss <code># EOF</code> at the end of your file.</div>
+    <div  class="string length">
+        Error message <code>getting min and max timestamp: next: expected a valid start token, got "\n" ("INVALID") while parsing: "\n"</code>
+        means you have an empty line.
+    </div>
+</div>
+
+<h3>Generating new blocks</h3>
+<div class="string length">
+    After running <code>promtool tsdb create-blocks-from openmetrics /&lt;input-file&gt;/ [&lt;output-directory&gt;/]</code>,
+    you should see new blocks created: <img src="images/Screenshot%202026-04-21%20at%2015.45.11.png">
+
+    Note: if you don't provide <code>output-directory</code>, the blocks will be created in a new directory called <code>data</code>.
+    Make sure to move them into your <code>prometheus_data</code> directory and restart Prometheus: <code>docker restart prometheus</code>.
+</div>
+
+<h3>Verifying that the data is there</h3>
+<div>
+    Check the Prometheus logs after restart: <code>docker logs prometheus</code>. You should see a messages like
+    <code>time=2026-04-21T13:54:45.758Z level=INFO source=repair.go:54 msg="Found healthy block" component=tsdb mint=1770999030000 maxt=1772292990001 ulid=01KPR543K3XKHMBXSQPYT1DR6A
+    </code> for every new block. If the messages are now there, make sure that the blocks are in the correct directory.
+    If you don't see your inserted data in Grafana, it doesn't mean that it's not in Prometheus! Different Grafana
+    settings, like <code>min step</code> may affect how your data is displayed, especially if you inserted scattered data.
+
+    Check in Prometheus tool (usually your port 9090) by name of the metrics and timestamp, like this:
+    <img src="images/Screenshot%202026-04-21%20at%2015.59.38.png">
+
+    If your data is there, success! Then you can play around with setting in Grafana to make your data visible if you need it.
+</div>
+
+
+<h3>Changing Prometheus Retention</h3>
+<div class="string length">
+    Prometheus will delete data that is older than specified in retention policy. If you want to change your retention
+    policy, you have to specify it in your command that starts Prometheus (not <code>prometheus.yml</code> file).
+    Be careful, passing <code>"--storage.tsdb.retention.time"</code> in docker-compose command will override the whole
+    command, not append just one flag. So you have to get the command that currently starts you prometheus
+    <code>cat /proc/1/cmdline</code>and move all this args into docker-compose file as well! Here's the docker service
+    for prometheus I ended up with<script src="https://gist.github.com/LenaAn/0b66f4815c7f50d7324e9066ff779208.js"></script>.
+</div>
+
+<script src="1_challenge.js"></script>
+
+</body>
+</html>
