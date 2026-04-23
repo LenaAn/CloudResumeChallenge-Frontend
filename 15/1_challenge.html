@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Resume Challenge: Part 2</title>
+    <link rel="stylesheet" href="1_challenge.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar">
+        <a href="#prev">
+            <img src="left.svg" alt="Left arrow">
+            <span>Previous note</span>
+        </a>
+        <a href="index.html">Home</a>
+        <a href="#next">
+            <span>Next note</span>
+            <img src="right.svg" alt="Right arrow">
+        </a>
+    </div>
+
+
+    <h2>Part 2</h2>
+    <h1>Cloud Resume Challenge</h1>
+  
+  
+    <p class="summary">I'm excited to announce that I've become an AWS Certified Cloud Practitioner! This certification is a milestone in my
+    learning journey, and I'm eager to explore more AWS certifications and deepen my hands-on experience with the platform.</p>
+
+
+    <button id="share-tw" class="share-btn">
+        <span class="twitter-icon-wrapper">
+            <img class="twitter-icon" src="twitter.svg">
+        </span>
+        <span class="twitter-text">Share on Twitter</span>
+    </button>
+
+
+    <h3>Setting Up HTTPS with Amazon CloudFront</h3>
+    <div class="string length">
+        <p>Today, I'm continuing to work on the task at &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://cloudresumechallenge.dev/" class="special-link move-left">cloudresumechallenge.dev</a>, and my plan has two main points:
+        </p>
+        <ul>
+            <li class="list-item"><strong>HTTPS</strong>: The S3 website URL should use HTTPS for security. Amazon
+                CloudFront will be needed for this.</li>
+            <li class="list-item"><strong>DNS</strong>: Set up a custom DNS domain name for the CloudFront distribution,
+                allowing your resume to be accessed at something like <a href="my-c00l-resume-website.com" class="special-link move-left2">my-c00l-resume-website.com</a>. You can use Amazon Route
+                53 or any other DNS provider. Domain name registration usually costs about ten dollars.</li>
+        </ul>
+    </div>
+
+    <h3>Implementing HTTPS</h3>
+    <div class="string length">
+        The first part was relatively straightforward, although, of course, it didn't work the first time. I decided not to use
+        the provided CloudFormation stacks, as I wanted to click the buttons myself for the first time. So, I went to the
+        CloudFront interface, created a distribution, and specified the S3 bucket as the origin.
+        
+        I had to configure whether my distribution would accept HTTP or HTTPS. I did all this to ensure clients don't use
+        insecure HTTP, so I configured HTTP to redirect to HTTPS. However, I made a mistake because my S3 bucket does not
+        support HTTPS (as far as I understand). After fixing it, I closed public access to the S3 bucket. Now, everything seems
+        to be in order: you can only access the S3 bucket through HTTPS via CloudFront. Then, I went to grab a bite to eat.
+    </div>
+
+    <h3>Registering a Domain</h3>
+    <div class="string length">
+        I had a mediocre wok with udon noodles, beef, tofu, teriyaki sauce, and red sauce. After that, I went to a coffee shop,
+        got a coffee and brownie, and it was time to register a domain!
+        
+        Last year, I registered lenaan.io for $11/year through GoDaddy but ended up not using it. So, I opened Route 53, and
+        there was a big "Register Domain" button. I decided to save money and registered lenaan.link for $6/year. They said
+        registration would take up to 3 days, but I received an email soon after, and I already had a domain while enjoying
+        dessert.
+    </div>
+
+    <h3>Connecting Domain to CloudFront Distribution</h3>
+    <div class="string length">
+        AWS services have a massive amount of documentation and step-by-step guides, so it's unclear where you are in each
+        tutorial. I decided not to follow the steps I didn't understand and went to Route 53 Hosted Zones to add a record. I
+        needed to redirect to my CloudFront distribution, but Route 53 didn't find it and mentioned something about us-east-1.
+    </div>
+
+    <h3>Obtaining a Certificate</h3>
+    <div class="string length">
+        After some research, I found that I needed to add my domain to the CloudFront distribution as an alternative name and
+        obtain a certificate for my domain in AWS Certificate Manager. I had read about it in tutorials but didn't understand
+        what it was and why, so I initially ignored it. Now it's clear! I requested a certificate, wrote this post, and now I'm
+        waiting.
+    </div>
+
+    <script src="1_challenge.js"></script>
+
+</body>
+
+</html>
